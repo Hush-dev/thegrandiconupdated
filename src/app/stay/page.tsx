@@ -1,7 +1,7 @@
 'use client';
 
 import PageBanner from '@/components/PageBanner';
-import StaySection from '@/components/Staysection';
+import StaySection from '@/components/StaySection';
 import { useBooking } from '@/components/ClientShell';
 
 export default function StayPage() {
