@@ -1,9 +1,10 @@
 'use client';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { HALLS } from '@/types';
-import { Circle, Info, Layers, ShieldCheck, UsersRound } from 'lucide-react';
-import { useState } from 'react';
+import { Circle, Info, ShieldCheck } from 'lucide-react';
 import SectionHeader from '@/components/SectionHeader';
+import RoomTabs from '@/components/RoomTabs';
 
 interface HallsSectionProps {
   onOpenBooking: (hallName: string) => void;
@@ -18,7 +19,7 @@ export default function HallsSection({ onOpenBooking, standalone = false }: Hall
   return (
     <section
       id="halls-section"
-      className="relative min-h-screen bg-[#0A0908] text-[#F2ECE2] flex flex-col justify-center py-20 border-t border-[#C4A472]/15"
+      className="relative min-h-screen bg-[#0A0908] text-[#F2ECE2] flex flex-col justify-center py-20 border-t border-[#C4A472]/15 ambient-glow"
     >
       {/* Film Grain */}
       <div className="absolute inset-0 z-1 cinematic-grain pointer-events-none" />
@@ -34,10 +35,19 @@ export default function HallsSection({ onOpenBooking, standalone = false }: Hall
         {/* Section Header */}
         <SectionHeader title="Celebration" accent="Halls" eyebrow={''} />
 
+        {/* Mobile dropdown — only visible on small screens */}
+        <div className="lg:hidden mb-8">
+          <RoomTabs
+            tabs={HALLS.map((h) => ({ id: h.id, name: h.name }))}
+            selectedIdx={activeIdx}
+            onSelect={setActiveIdx}
+          />
+        </div>
+
         {/* Cinematic Backdrop + Detail split layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch min-h-[500px]">
-          {/* Left panel: Custom navigation and technical data specification */}
-          <div className="lg:col-span-4 flex flex-col justify-center select-none space-y-8 lg:pr-6">
+          {/* Left panel: hidden on mobile, visible on desktop */}
+          <div className="hidden lg:flex lg:col-span-4 flex-col justify-center select-none space-y-8 lg:pr-6">
             <span className="text-[9px] tracking-[0.3em] font-mono text-[#7A7068] uppercase">
               Select A Destination
             </span>
@@ -75,8 +85,8 @@ export default function HallsSection({ onOpenBooking, standalone = false }: Hall
             </div>
           </div>
 
-          {/* Right panel: Grand interactive full screen card */}
-          <div className="lg:col-span-8 relative flex flex-col justify-between overflow-hidden border border-[#C4A472]/15 shadow-[0_30px_60px_rgba(0,0,0,0.8)] bg-[#100E0C]">
+          {/* Right panel */}
+          <div className="lg:col-span-8 col-span-1 relative flex flex-col justify-between overflow-hidden border border-[#C4A472]/15 shadow-[0_30px_60px_rgba(0,0,0,0.8)] bg-[#100E0C]">
             {/* Visual background sequence */}
             <div className="absolute inset-0 z-0">
               <AnimatePresence mode="wait">

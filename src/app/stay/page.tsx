@@ -16,7 +16,7 @@ export default function StayPage() {
         image="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=80&w=1920"
         alt="Suites Banner"
       />
-      <StaySection onOpenBooking={() => handleOpenBooking('room')} standalone />
+      <StaySection onOpenBooking={(_roomName) => handleOpenBooking('room')} standalone />
     </div>
   );
 }

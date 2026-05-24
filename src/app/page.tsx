@@ -71,10 +71,9 @@ export default function HomePage() {
       {/* Everything below overlaps the fixed hero image on scroll */}
       <SectionWrapper>
         <TeaserQuote />
-        <StaySection onOpenBooking={() => handleOpenBooking('room')} />
-        <HallsSection onOpenBooking={() => handleOpenBooking('hall')} />
+        <StaySection onOpenBooking={(_roomName) => handleOpenBooking('room')} />
+        <HallsSection onOpenBooking={(_hallName) => handleOpenBooking('hall')} />
         <DiningSection onOpenBooking={() => handleOpenBooking('dining')} />
-        <TestimonialsSection />
       </SectionWrapper>
     </div>
   );
