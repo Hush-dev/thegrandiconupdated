@@ -6,17 +6,16 @@ import { useBooking } from '@/components/ClientShell';
 
 export default function StayPage() {
   const { handleOpenBooking } = useBooking();
-
   return (
     <div className="pt-20">
       <PageBanner
         eyebrow="CHAMBERS OF SOLITUDE"
-        title="Suites &"
-        titleAccent="Sanctuaries"
-        image="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=80&w=1920"
-        alt="Suites Banner"
+        title="Rooms &"
+        titleAccent="Suites"
+        image="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=1920"
+        alt="Rooms & Suites"
       />
-      <StaySection onOpenBooking={(_roomName) => handleOpenBooking('room')} standalone />
+      <StaySection onOpenBooking={(roomName) => handleOpenBooking('room', roomName)} standalone />
     </div>
   );
 }

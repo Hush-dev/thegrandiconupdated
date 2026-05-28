@@ -33,9 +33,6 @@ export default function GallerySection() {
         {/* Section Header */}
         <div className="mb-16 select-none flex flex-col md:flex-row justify-between items-baseline gap-6">
           <div>
-            <span className="text-[10px] md:text-xs font-mono tracking-[0.4em] text-[#C4A472] uppercase block mb-3">
-              04 — JOURNAL
-            </span>
             <h2 className="font-serif font-light text-4xl md:text-6xl tracking-tight text-[#F2ECE2]">
               The Visual <span className="italic text-[#C4A472]">Journey</span>
             </h2>

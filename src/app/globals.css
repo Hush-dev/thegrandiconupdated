@@ -2,56 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Navbar height tokens ───────────────────────────────────── */
+:root {
+  --navbar-height: 80px;
+}
+/* When scrolled the navbar shrinks — tabs adjust via JS */
+
+/* ─── Base ───────────────────────────────────────────────────── */
+html {
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   background-color: #0A0908;
   color: #F2ECE2;
   font-family: var(--font-sans);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  /* Smooth native scroll */
+  -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
 }
 
-/* Grain: GPU-composited layer, never triggers layout */
-.cinematic-grain::after {
+/* ─── Cinematic grain — single layer, original ───────────────── */
+/* .cinematic-grain::after {
   content: '';
   position: fixed;
   inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   opacity: 0.035;
   pointer-events: none;
-  /* Only animate transform — stays on compositor thread */
   will-change: transform;
   animation: grainShift 0.5s steps(2) infinite;
+  z-index: 9998;
 }
 
 @keyframes grainShift {
-  0%   { transform: translate3d(0, 0, 0); }
-  25%  { transform: translate3d(-2px, 1px, 0); }
-  50%  { transform: translate3d(1px, -2px, 0); }
-  75%  { transform: translate3d(-1px, 2px, 0); }
-  100% { transform: translate3d(0, 0, 0); }
-}
+  0%   { transform: translate3d(0,    0,    0); }
+  25%  { transform: translate3d(-2px, 1px,  0); }
+  50%  { transform: translate3d(1px, -2px,  0); }
+  75%  { transform: translate3d(-1px, 2px,  0); }
+  100% { transform: translate3d(0,    0,    0); }
+} */
 
-/* Scrollbar */
+/* ─── Hide scrollbar utility ─────────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ─── Scrollbar ──────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #0A0908; }
 ::-webkit-scrollbar-thumb { background: rgba(196, 164, 114, 0.25); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(196, 164, 114, 0.5); }
 
-/* Promote images that animate to GPU */
+/* ─── Selection ──────────────────────────────────────────────── */
+::selection {
+  background: rgba(196, 164, 114, 0.2);
+  color: #C4A472;
+}
+
+/* ─── Image GPU promotion ────────────────────────────────────── */
 img {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
 /* ─── Suppress native video UI on all devices ───────────────── */
-video {
-  -webkit-media-controls: none;
-  pointer-events: none;
-}
+video { pointer-events: none; }
 video::-webkit-media-controls { display: none !important; }
 video::-webkit-media-controls-enclosure { display: none !important; }
 video::-webkit-media-controls-overlay-play-button { display: none !important; }
 video::-webkit-media-controls-start-playback-button { display: none !important; }
- 
+
+/* ─── Focus ring ─────────────────────────────────────────────── */
+:focus-visible {
+  outline: 1px solid rgba(196, 164, 114, 0.5);
+  outline-offset: 3px;
+}
