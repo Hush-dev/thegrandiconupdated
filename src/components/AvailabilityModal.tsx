@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Bed, Landmark, UtensilsCrossed, Sparkles, MessageSquareHeart, Check, Send, IndianRupee } from 'lucide-react';
 
@@ -12,7 +12,6 @@ interface AvailabilityModalProps {
   initialHallName?: string;
 }
 
-// ── Room names matching ExperienceHub exactly ───────────────────
 const ROOM_OPTIONS = [
   'Presidential Suite',
   'Executive Suite',
@@ -28,7 +27,6 @@ const HALL_OPTIONS = [
   'Suraahi',
 ];
 
-// ── Pricing data (keyed to ExperienceHub room names) ───────────
 const ROOM_PRICING: Record<string, { single: number; double: number; triple: number }> = {
   'Presidential Suite': { single: 18000, double: 18000, triple: 18000 },
   'Executive Suite':    { single: 12000, double: 12000, triple: 12000 },
@@ -58,17 +56,25 @@ export default function AvailabilityModal({
   const [name,  setName]  = useState('');
   const [phone, setPhone] = useState('');
 
-  // Room
+  // Room — initialize directly from props, no useEffect needed
   const [checkin,       setCheckin]       = useState('');
   const [checkout,      setCheckout]      = useState('');
-  const [roomType,      setRoomType]      = useState(ROOM_OPTIONS[0]);
+  const [roomType,      setRoomType]      = useState(
+    initialRoomName && ROOM_OPTIONS.includes(initialRoomName)
+      ? initialRoomName
+      : ROOM_OPTIONS[0]
+  );
   const [roomOccupancy, setRoomOccupancy] = useState<'single' | 'double' | 'triple'>('double');
 
-  // Hall
+  // Hall — initialize directly from props, no useEffect needed
   const [hallDate,       setHallDate]       = useState('');
   const [eventType,      setEventType]      = useState('Wedding Assembly');
-  const [hallPreference, setHallPreference] = useState(HALL_OPTIONS[0]);
-  const [hallGuests,     setHallGuests]     = useState('100');
+  const [hallPreference, setHallPreference] = useState(
+    initialHallName && HALL_OPTIONS.includes(initialHallName)
+      ? initialHallName
+      : HALL_OPTIONS[0]
+  );
+  const [hallGuests, setHallGuests] = useState('100');
 
   // Dining
   const [diningDate,   setDiningDate]   = useState('');
@@ -81,24 +87,7 @@ export default function AvailabilityModal({
   const [eventGuests,  setEventGuests]  = useState('200');
   const [requirements, setRequirements] = useState('');
 
-  // ── Sync type whenever initialType changes ──────────────────
-  useEffect(() => { setSelectedType(initialType); }, [initialType]);
-
-  // ── Pre-select room name when passed from ExperienceHub ─────
-  useEffect(() => {
-    if (initialRoomName && ROOM_OPTIONS.includes(initialRoomName)) {
-      setRoomType(initialRoomName);
-    }
-  }, [initialRoomName]);
-
-  // ── Pre-select hall name when passed from ExperienceHub ─────
-  useEffect(() => {
-    if (initialHallName && HALL_OPTIONS.includes(initialHallName)) {
-      setHallPreference(initialHallName);
-    }
-  }, [initialHallName]);
-
-  // ── Live pricing ─────────────────────────────────────────────
+  // Live pricing
   const livePrice = useMemo(() => {
     if (selectedType !== 'room') return null;
     return ROOM_PRICING[roomType]?.[roomOccupancy] ?? null;
@@ -106,16 +95,19 @@ export default function AvailabilityModal({
 
   const nights = useMemo(() => {
     if (!checkin || !checkout) return 0;
-    return Math.max(0, Math.round((new Date(checkout).getTime() - new Date(checkin).getTime()) / 86400000));
+    return Math.max(0, Math.round(
+      (new Date(checkout).getTime() - new Date(checkin).getTime()) / 86400000
+    ));
   }, [checkin, checkout]);
 
   const totalPrice = livePrice && nights > 0 ? livePrice * nights : null;
   const today = new Date().toISOString().split('T')[0];
 
-  // ── WhatsApp message ─────────────────────────────────────────
+  // WhatsApp message builder
   const generateWhatsAppLink = () => {
     const ph = '919604938657';
     let text = '';
+
     if (selectedType === 'room') {
       const priceNote = livePrice
         ? `💰 *Rate:* ${fmt(livePrice)} per night${totalPrice ? ` × ${nights} nights = ${fmt(totalPrice)}` : ''}`
@@ -128,12 +120,16 @@ export default function AvailabilityModal({
     } else {
       text = `Hello The Grand Icon 🙏\n\nEvent Enquiry:\n\n🎉 *Occasion:* ${occasion}\n📅 *Date:* ${eventDate}\n👥 *Guests:* ${eventGuests}\n📝 *Notes:* ${requirements || 'To be discussed'}\n\n*Name:* ${name}\n📞 *Phone:* ${phone}`;
     }
+
     return `https://wa.me/${ph}?text=${encodeURIComponent(text)}`;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !phone) { alert('Please fill in your Name and Phone number.'); return; }
+    if (!name || !phone) {
+      alert('Please fill in your Name and Phone number.');
+      return;
+    }
     setIsSubmitting(true);
     setTimeout(() => {
       window.open(generateWhatsAppLink(), '_blank');
@@ -153,13 +149,20 @@ export default function AvailabilityModal({
     <AnimatePresence>
       {isOpen && (
         <>
+          {/* Backdrop */}
           <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             onClick={onClose}
             className="fixed inset-0 z-50 bg-black/75 backdrop-blur-[6px] cursor-pointer"
           />
+
+          {/* Sheet */}
           <motion.div
-            initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }}
+            initial={{ y: '100%' }}
+            animate={{ y: 0 }}
+            exit={{ y: '100%' }}
             transition={{ type: 'spring', stiffness: 220, damping: 28 }}
             drag="y"
             dragConstraints={{ top: 0 }}
@@ -170,7 +173,7 @@ export default function AvailabilityModal({
             className="fixed bottom-0 left-0 right-0 z-[51] bg-[#161412] border-t border-[#C4A472]/40 rounded-t-[20px] shadow-[0_-15px_60px_rgba(0,0,0,0.9)] max-h-[92dvh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Drag handle — tap or drag down to close */}
+            {/* Drag handle */}
             <div
               className="flex justify-center py-3 sticky top-0 bg-[#161412] z-10 cursor-grab active:cursor-grabbing"
               onClick={onClose}
@@ -191,35 +194,52 @@ export default function AvailabilityModal({
                     Direct Concierge Connection via WhatsApp
                   </p>
                 </div>
-                <button type="button" onClick={onClose}
-                  className="w-9 h-9 border border-[#C4A472]/20 hover:border-[#C4A472] flex items-center justify-center text-[#7A7068] hover:text-[#F2ECE2] transition-colors duration-300 cursor-pointer focus:outline-none">
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="w-9 h-9 border border-[#C4A472]/20 hover:border-[#C4A472] flex items-center justify-center text-[#7A7068] hover:text-[#F2ECE2] transition-colors duration-300 cursor-pointer focus:outline-none"
+                >
                   <X className="w-4 h-4" />
                 </button>
               </div>
 
-              {/* Step 1 — type */}
+              {/* Step 1 — type selector */}
               <div className="mb-7">
-                <span className="block text-[9px] font-mono tracking-[0.3em] uppercase text-[#7A7068] mb-4">Step 01 — Choose Format</span>
+                <span className="block text-[9px] font-mono tracking-[0.3em] uppercase text-[#7A7068] mb-4">
+                  Step 01 — Choose Format
+                </span>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                   {typeConfig.map((item) => {
                     const isSelected = selectedType === item.id;
                     const Icon = item.icon;
                     return (
-                      <button key={item.id} type="button"
-                        onClick={() => setSelectedType(item.id as any)}
-                        className={`group relative h-24 flex flex-col justify-end items-start p-3.5 bg-[#0A0908] overflow-hidden border transition-colors duration-300 text-left focus:outline-none cursor-pointer ${isSelected ? 'border-[#C4A472]' : 'border-[#C4A472]/10 hover:border-[#C4A472]/30'}`}>
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => setSelectedType(item.id as 'room' | 'hall' | 'dining' | 'event')}
+                        className={`group relative h-24 flex flex-col justify-end items-start p-3.5 bg-[#0A0908] overflow-hidden border transition-colors duration-300 text-left focus:outline-none cursor-pointer ${
+                          isSelected
+                            ? 'border-[#C4A472]'
+                            : 'border-[#C4A472]/10 hover:border-[#C4A472]/30'
+                        }`}
+                      >
                         {isSelected && (
                           <div className="absolute top-2.5 right-2.5 h-4 w-4 bg-[#C4A472] flex items-center justify-center text-[#0A0908] rounded-full">
                             <Check className="w-2.5 h-2.5 stroke-[3px]" />
                           </div>
                         )}
-                        <img src={item.image} alt={item.label}
+                        <img
+                          src={item.image}
+                          alt={item.label}
                           className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-opacity duration-300 saturate-50"
-                          referrerPolicy="no-referrer" />
+                          referrerPolicy="no-referrer"
+                        />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-[#0A0908]/60 to-transparent" />
                         <div className="relative z-10 space-y-0.5">
                           <Icon className={`w-4 h-4 ${isSelected ? 'text-[#C4A472]' : 'text-[#7A7068]'}`} />
-                          <span className={`block font-serif text-[14px] ${isSelected ? 'text-[#F2ECE2]' : 'text-[#7A7068]'}`}>{item.label}</span>
+                          <span className={`block font-serif text-[14px] ${isSelected ? 'text-[#F2ECE2]' : 'text-[#7A7068]'}`}>
+                            {item.label}
+                          </span>
                         </div>
                       </button>
                     );
@@ -227,39 +247,59 @@ export default function AvailabilityModal({
                 </div>
               </div>
 
-              {/* Step 2 — details */}
+              {/* Step 2 — form */}
               <form onSubmit={handleSubmit} className="space-y-6">
                 <span className="block text-[9px] font-mono tracking-[0.3em] uppercase text-[#7A7068] pb-2 border-b border-[#C4A472]/10">
                   Step 02 — Your Details
                 </span>
 
-                {/* Name + phone */}
+                {/* Name + phone — always visible */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
                     <label className={labelCls}>Full Name *</label>
-                    <input type="text" required placeholder="e.g. Rajvardhan Patil"
-                      value={name} onChange={(e) => setName(e.target.value)} className={inputCls} />
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Rajvardhan Patil"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className={inputCls}
+                    />
                   </div>
                   <div>
                     <label className={labelCls}>Phone Number *</label>
-                    <input type="tel" required placeholder="+91 96049 38657"
-                      value={phone} onChange={(e) => setPhone(e.target.value)} className={inputCls} />
+                    <input
+                      type="tel"
+                      required
+                      placeholder="+91 96049 38657"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      className={inputCls}
+                    />
                   </div>
                 </div>
 
+                {/* Dynamic section per type */}
                 <AnimatePresence mode="wait">
 
-                  {/* ROOM */}
+                  {/* ── ROOM ─────────────────────────────────── */}
                   {selectedType === 'room' && (
-                    <motion.div key="room"
-                      initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.3 }}
+                    <motion.div
+                      key="room"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.3 }}
                       className="space-y-5"
                     >
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div>
                           <label className={labelCls}>Room Type</label>
-                          <select value={roomType} onChange={(e) => setRoomType(e.target.value)} className={selectCls}>
+                          <select
+                            value={roomType}
+                            onChange={(e) => setRoomType(e.target.value)}
+                            className={selectCls}
+                          >
                             {ROOM_OPTIONS.map(r => (
                               <option key={r} value={r} className="bg-[#161412]">{r}</option>
                             ))}
@@ -267,33 +307,54 @@ export default function AvailabilityModal({
                         </div>
                         <div>
                           <label className={labelCls}>Number of Guests</label>
-                          <select value={roomOccupancy} onChange={(e) => setRoomOccupancy(e.target.value as any)} className={selectCls}>
+                          <select
+                            value={roomOccupancy}
+                            onChange={(e) => setRoomOccupancy(e.target.value as 'single' | 'double' | 'triple')}
+                            className={selectCls}
+                          >
                             <option value="single" className="bg-[#161412]">1 Guest — Single Occupancy</option>
                             <option value="double" className="bg-[#161412]">2 Guests — Double Occupancy</option>
                             <option value="triple" className="bg-[#161412]">3 Guests — Triple Occupancy</option>
                           </select>
                         </div>
                       </div>
+
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div>
                           <label className={labelCls}>Check-In Date</label>
-                          <input type="date" required min={today} value={checkin}
-                            onChange={(e) => { setCheckin(e.target.value); if (checkout && e.target.value >= checkout) setCheckout(''); }}
-                            className={inputCls} />
+                          <input
+                            type="date"
+                            required
+                            min={today}
+                            value={checkin}
+                            onChange={(e) => {
+                              setCheckin(e.target.value);
+                              if (checkout && e.target.value >= checkout) setCheckout('');
+                            }}
+                            className={inputCls}
+                          />
                         </div>
                         <div>
                           <label className={labelCls}>Check-Out Date</label>
-                          <input type="date" required min={checkin || today} value={checkout}
-                            onChange={(e) => setCheckout(e.target.value)} className={inputCls} />
+                          <input
+                            type="date"
+                            required
+                            min={checkin || today}
+                            value={checkout}
+                            onChange={(e) => setCheckout(e.target.value)}
+                            className={inputCls}
+                          />
                         </div>
                       </div>
 
-                      {/* Live pricing */}
+                      {/* Live pricing pill */}
                       <AnimatePresence>
                         {livePrice && (
                           <motion.div
-                            initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.3 }}
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3 }}
                             className="overflow-hidden"
                           >
                             <div className="bg-[#0A0908]/70 border border-[#C4A472]/25 p-4 flex flex-wrap items-center justify-between gap-4">
@@ -306,11 +367,15 @@ export default function AvailabilityModal({
                               </div>
                               {totalPrice && nights > 0 && (
                                 <div className="text-right">
-                                  <span className="block text-[8px] font-mono tracking-[0.3em] text-[#7A7068] uppercase">{nights} Night{nights > 1 ? 's' : ''} Total</span>
+                                  <span className="block text-[8px] font-mono tracking-[0.3em] text-[#7A7068] uppercase">
+                                    {nights} Night{nights > 1 ? 's' : ''} Total
+                                  </span>
                                   <span className="block font-serif text-[#F2ECE2] text-lg">{fmt(totalPrice)}</span>
                                 </div>
                               )}
-                              <span className="w-full text-[8px] font-mono text-[#5A524A] tracking-wider">* Exclusive of taxes. Subject to availability.</span>
+                              <span className="w-full text-[8px] font-mono text-[#5A524A] tracking-wider">
+                                * Exclusive of taxes. Subject to availability.
+                              </span>
                             </div>
                           </motion.div>
                         )}
@@ -318,17 +383,24 @@ export default function AvailabilityModal({
                     </motion.div>
                   )}
 
-                  {/* HALL */}
+                  {/* ── HALL ─────────────────────────────────── */}
                   {selectedType === 'hall' && (
-                    <motion.div key="hall"
-                      initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.3 }}
+                    <motion.div
+                      key="hall"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.3 }}
                       className="space-y-5"
                     >
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div>
                           <label className={labelCls}>Hall Preference</label>
-                          <select value={hallPreference} onChange={(e) => setHallPreference(e.target.value)} className={selectCls}>
+                          <select
+                            value={hallPreference}
+                            onChange={(e) => setHallPreference(e.target.value)}
+                            className={selectCls}
+                          >
                             {HALL_OPTIONS.map(h => (
                               <option key={h} value={h} className="bg-[#161412]">{h}</option>
                             ))}
@@ -336,7 +408,11 @@ export default function AvailabilityModal({
                         </div>
                         <div>
                           <label className={labelCls}>Event Type</label>
-                          <select value={eventType} onChange={(e) => setEventType(e.target.value)} className={selectCls}>
+                          <select
+                            value={eventType}
+                            onChange={(e) => setEventType(e.target.value)}
+                            className={selectCls}
+                          >
                             <option className="bg-[#161412]" value="Wedding Assembly">Royal Wedding Ceremony</option>
                             <option className="bg-[#161412]" value="Sangeet / Mehendi">Sangeet / Mehendi Night</option>
                             <option className="bg-[#161412]" value="Corporate Conference">Executive Corporate Summit</option>
@@ -345,15 +421,26 @@ export default function AvailabilityModal({
                           </select>
                         </div>
                       </div>
+
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div>
                           <label className={labelCls}>Event Date</label>
-                          <input type="date" required min={today} value={hallDate}
-                            onChange={(e) => setHallDate(e.target.value)} className={inputCls} />
+                          <input
+                            type="date"
+                            required
+                            min={today}
+                            value={hallDate}
+                            onChange={(e) => setHallDate(e.target.value)}
+                            className={inputCls}
+                          />
                         </div>
                         <div>
                           <label className={labelCls}>Expected Guest Count</label>
-                          <select value={hallGuests} onChange={(e) => setHallGuests(e.target.value)} className={selectCls}>
+                          <select
+                            value={hallGuests}
+                            onChange={(e) => setHallGuests(e.target.value)}
+                            className={selectCls}
+                          >
                             <option className="bg-[#161412]" value="50">Up to 50 Guests</option>
                             <option className="bg-[#161412]" value="100">50–100 Guests</option>
                             <option className="bg-[#161412]" value="200">100–200 Guests</option>
@@ -367,50 +454,83 @@ export default function AvailabilityModal({
                     </motion.div>
                   )}
 
-                  {/* DINING */}
+                  {/* ── DINING ───────────────────────────────── */}
                   {selectedType === 'dining' && (
-                    <motion.div key="dining"
-                      initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.3 }}
+                    <motion.div
+                      key="dining"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.3 }}
                       className="grid grid-cols-1 md:grid-cols-3 gap-5"
                     >
                       <div>
                         <label className={labelCls}>Reservation Date</label>
-                        <input type="date" required min={today} value={diningDate}
-                          onChange={(e) => setDiningDate(e.target.value)} className={inputCls} />
+                        <input
+                          type="date"
+                          required
+                          min={today}
+                          value={diningDate}
+                          onChange={(e) => setDiningDate(e.target.value)}
+                          className={inputCls}
+                        />
                       </div>
                       <div>
                         <label className={labelCls}>Arrival Time</label>
-                        <input type="time" required value={diningTime}
-                          onChange={(e) => setDiningTime(e.target.value)} className={inputCls} />
+                        <input
+                          type="time"
+                          required
+                          value={diningTime}
+                          onChange={(e) => setDiningTime(e.target.value)}
+                          className={inputCls}
+                        />
                       </div>
                       <div>
                         <label className={labelCls}>Number of Guests</label>
-                        <select value={diningGuests} onChange={(e) => setDiningGuests(e.target.value)} className={selectCls}>
-                          {['1','2','4','6','8','10','15'].map(n => (
-                            <option key={n} value={n} className="bg-[#161412]">{n} {n === '1' ? 'Guest' : 'Guests'}</option>
+                        <select
+                          value={diningGuests}
+                          onChange={(e) => setDiningGuests(e.target.value)}
+                          className={selectCls}
+                        >
+                          {['1', '2', '4', '6', '8', '10', '15'].map(n => (
+                            <option key={n} value={n} className="bg-[#161412]">
+                              {n} {n === '1' ? 'Guest' : 'Guests'}
+                            </option>
                           ))}
                         </select>
                       </div>
                     </motion.div>
                   )}
 
-                  {/* EVENT */}
+                  {/* ── EVENT ────────────────────────────────── */}
                   {selectedType === 'event' && (
-                    <motion.div key="event"
-                      initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.3 }}
+                    <motion.div
+                      key="event"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.3 }}
                       className="space-y-5"
                     >
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                         <div>
                           <label className={labelCls}>Event Date</label>
-                          <input type="date" required min={today} value={eventDate}
-                            onChange={(e) => setEventDate(e.target.value)} className={inputCls} />
+                          <input
+                            type="date"
+                            required
+                            min={today}
+                            value={eventDate}
+                            onChange={(e) => setEventDate(e.target.value)}
+                            className={inputCls}
+                          />
                         </div>
                         <div>
                           <label className={labelCls}>Occasion Type</label>
-                          <select value={occasion} onChange={(e) => setOccasion(e.target.value)} className={selectCls}>
+                          <select
+                            value={occasion}
+                            onChange={(e) => setOccasion(e.target.value)}
+                            className={selectCls}
+                          >
                             <option className="bg-[#161412]" value="Royal High Wedding">Royal Wedding Assembly</option>
                             <option className="bg-[#161412]" value="Anniversary Jubilee">Anniversary Jubilee</option>
                             <option className="bg-[#161412]" value="VIP Celebrity Assembly">VIP Celebrity Assembly</option>
@@ -420,46 +540,68 @@ export default function AvailabilityModal({
                         </div>
                         <div>
                           <label className={labelCls}>Guest Headcount</label>
-                          <input type="number" placeholder="e.g. 350" min="1"
-                            value={eventGuests} onChange={(e) => setEventGuests(e.target.value)} className={inputCls} />
+                          <input
+                            type="number"
+                            placeholder="e.g. 350"
+                            min="1"
+                            value={eventGuests}
+                            onChange={(e) => setEventGuests(e.target.value)}
+                            className={inputCls}
+                          />
                         </div>
                       </div>
                       <div>
                         <label className={labelCls}>Special Requirements (Optional)</label>
-                        <textarea rows={2} placeholder="e.g. VIP valet, organic Deccan menu, airport transfers..."
-                          value={requirements} onChange={(e) => setRequirements(e.target.value)}
-                          className="w-full bg-transparent border-b border-[#C4A472]/20 focus:border-[#C4A472] outline-none text-[#F2ECE2] text-sm font-sans py-2 resize-none transition-colors duration-300 placeholder:text-[#5A524A]" />
+                        <textarea
+                          rows={2}
+                          placeholder="e.g. VIP valet, organic Deccan menu, airport transfers..."
+                          value={requirements}
+                          onChange={(e) => setRequirements(e.target.value)}
+                          className="w-full bg-transparent border-b border-[#C4A472]/20 focus:border-[#C4A472] outline-none text-[#F2ECE2] text-sm font-sans py-2 resize-none transition-colors duration-300 placeholder:text-[#5A524A]"
+                        />
                       </div>
                     </motion.div>
                   )}
 
                 </AnimatePresence>
 
-                {/* Special requests for room/hall */}
+                {/* Special requests for room / hall only */}
                 {(selectedType === 'room' || selectedType === 'hall') && (
                   <div>
                     <label className={labelCls}>Special Requests (Optional)</label>
-                    <textarea rows={2} placeholder="e.g. Early check-in, anniversary setup, dietary preferences..."
-                      value={requirements} onChange={(e) => setRequirements(e.target.value)}
-                      className="w-full bg-transparent border-b border-[#C4A472]/20 focus:border-[#C4A472] outline-none text-[#F2ECE2] text-sm font-sans py-2 resize-none transition-colors duration-300 placeholder:text-[#5A524A]" />
+                    <textarea
+                      rows={2}
+                      placeholder="e.g. Early check-in, anniversary setup, dietary preferences..."
+                      value={requirements}
+                      onChange={(e) => setRequirements(e.target.value)}
+                      className="w-full bg-transparent border-b border-[#C4A472]/20 focus:border-[#C4A472] outline-none text-[#F2ECE2] text-sm font-sans py-2 resize-none transition-colors duration-300 placeholder:text-[#5A524A]"
+                    />
                   </div>
                 )}
 
-                {/* Submit */}
+                {/* Submit row */}
                 <div className="pt-5 border-t border-[#C4A472]/10 flex flex-col sm:flex-row items-center justify-between gap-5">
                   <div className="flex items-center gap-2.5 text-[#7A7068] text-xs">
                     <MessageSquareHeart className="w-5 h-5 text-[#C4A472] shrink-0" />
                     <span className="font-light">Concierge responds within 4 minutes on WhatsApp.</span>
                   </div>
-                  <button type="submit" disabled={isSubmitting}
-                    className="w-full sm:w-auto px-7 h-12 flex items-center justify-center gap-3 border border-[#C4A472] bg-[#C4A472]/15 text-[#C4A472] text-[10px] tracking-[0.25em] font-sans font-semibold uppercase hover:bg-[#C4A472] hover:text-[#0A0908] transition-colors duration-300 focus:outline-none cursor-pointer disabled:opacity-50">
-                    {isSubmitting
-                      ? <span className="animate-pulse">Connecting...</span>
-                      : <><span>Send via WhatsApp</span><Send className="w-3.5 h-3.5" /></>
-                    }
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full sm:w-auto px-7 h-12 flex items-center justify-center gap-3 border border-[#C4A472] bg-[#C4A472]/15 text-[#C4A472] text-[10px] tracking-[0.25em] font-sans font-semibold uppercase hover:bg-[#C4A472] hover:text-[#0A0908] transition-colors duration-300 focus:outline-none cursor-pointer disabled:opacity-50"
+                  >
+                    {isSubmitting ? (
+                      <span className="animate-pulse">Connecting...</span>
+                    ) : (
+                      <>
+                        <span>Send via WhatsApp</span>
+                        <Send className="w-3.5 h-3.5" />
+                      </>
+                    )}
                   </button>
                 </div>
               </form>
+
             </div>
           </motion.div>
         </>
