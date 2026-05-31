@@ -1,17 +1,23 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface WelcomeSceneProps {
   onComplete: () => void;
 }
 
-export default function WelcomeScene({
-  onComplete,
-}: WelcomeSceneProps) {
+export default function WelcomeScene({ onComplete }: WelcomeSceneProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isExiting, setIsExiting] = useState(false);
+
+  const handleExit = useCallback(() => {
+    if (isExiting) return;
+    setIsExiting(true);
+    setTimeout(() => {
+      onComplete();
+    }, 1200);
+  }, [isExiting, onComplete]); // ✅ dependencies declared
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -19,21 +25,10 @@ export default function WelcomeScene({
     }, 4200);
 
     return () => clearTimeout(timer);
-  }, []);
-
-  const handleExit = () => {
-    if (isExiting) return;
-
-    setIsExiting(true);
-
-    setTimeout(() => {
-      onComplete();
-    }, 1200);
-  };
+  }, [handleExit]); // ✅ now safe to include
 
   useEffect(() => {
     const video = videoRef.current;
-
     if (!video) return;
 
     video.muted = true;
@@ -48,6 +43,8 @@ export default function WelcomeScene({
 
     playVideo();
   }, []);
+
+  // rest of your JSX unchanged
 
   return (
     <>
