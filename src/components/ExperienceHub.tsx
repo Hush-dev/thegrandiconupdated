@@ -49,12 +49,12 @@ const ROOMS = [
     description:
       'Experience unmatched luxury in our Presidential Suite featuring a spacious bedroom, elegant living area, luxury bathroom, smart entertainment system, premium furnishings, and personalized services crafted for an exceptional stay.',
     images: [
-      'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=1600',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173835/presidential_room_1_in5xfg.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173835/presidential_room_2_hnjwsb.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173835/presidential_room_3_exai6l.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173835/presidential_room_4_dbeakn.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173836/presidential_room_5_t2dzhb.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173835/presidential_room_6_m6bbvy.webp',
 
     ],
     amenities: [
@@ -77,12 +77,12 @@ const ROOMS = [
     description:
       'Designed for refined comfort, the Executive Suite offers a spacious bedroom, stylish workspace, modern bathroom, premium amenities, smart entertainment, and an elevated stay experience for business and leisure travelers alike.',
     images: [
-      'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=1600',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173885/executive_room_1_p6vphq.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173886/executive_room_2_djrwqz.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173885/executive_room_3_yw05mu.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173884/executive_room_4_tzxind.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173883/executive_room_5_uqbs02.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173882/executive_room_6_ne7tt9.webp',
 
     ],
     amenities: [
@@ -105,12 +105,12 @@ const ROOMS = [
     description:
       'Experience modern elegance in our Premium Room featuring spacious interiors, plush bedding, contemporary décor, premium amenities, and a relaxing ambiance designed for a comfortable and memorable stay.',
     images: [
-      'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=1600',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173861/premium_room_1_ecz0th.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173863/premium_room_2_btk7gu.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173861/premium_room_3_udjivh.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173860/premium_room_4_qqpq1l.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173859/premium_room_5_bnc5el.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173860/premium_room_6_yrbrtm.webp',
 
     ],
     amenities: [
@@ -133,12 +133,12 @@ const ROOMS = [
     description:
       'Unwind in our Deluxe Room thoughtfully designed with cozy interiors, elegant furnishings, modern comforts, and essential amenities to ensure a relaxing and enjoyable stay experience.',
     images: [
-      'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=1600',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173895/delux_room_2_c8oasx.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173896/delux_room_3_jnm5em.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173893/delux_room_6_y17iws.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173893/delux_room_5_deshqi.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173894/delux_room_4_vt7ugg.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173896/delux_room_1_wllbfz.webp',
 
     ],
     amenities: [
@@ -161,12 +161,10 @@ const ROOMS = [
     description:
       'Enjoy a comfortable and refreshing stay in our Superior Room featuring modern interiors, comfortable bedding, essential amenities, and a peaceful ambiance perfect for effortless relaxation.',
     images: [
-      'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&q=80&w=1600',
-      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=1600',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173848/superier_room_1_voqhzp.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173848/superier_room_2_zxtn64.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173847/superier_room_3_wltuip.webp',
+      'https://res.cloudinary.com/di1chosqa/image/upload/v1780173847/superier_room_4_mybjhp.webp',
 
     ],
     amenities: [
@@ -187,7 +185,7 @@ const HALLS = [
     id: 'sparsh', name: 'Sparsh', capacity: '80–250 Guests',
     tagline: 'Intimate elegance for curated gatherings.',
     description: 'An intimate yet grand hall perfect for corporate events, private dinners, and exclusive celebrations. Equipped with state-of-the-art audiovisual systems.',
-    image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=1600',
+    image: 'https://res.cloudinary.com/di1chosqa/image/upload/v1780212827/sparsh_lafyg6.webp',
     setups: ['Theatre Style', 'Cluster Setup', 'Round Table'],
     features: ['LED Wall', 'Line Array Sound', 'Stage Setup', 'Catering Services', 'Valet Parking', 'Green Room'],
   },
@@ -195,7 +193,7 @@ const HALLS = [
     id: 'majesty', name: 'Majesty', capacity: '300–800 Guests',
     tagline: 'Grand scale for legendary celebrations.',
     description: 'Our flagship pillarless ballroom featuring soaring double-height ceilings, crystal chandeliers, and an opulent main stage for grand weddings and gala events.',
-    image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1600',
+    image: 'https://res.cloudinary.com/di1chosqa/image/upload/v1780212827/majesty_xzowkb.webp',
     setups: ['Theatre Style', 'Cluster Setup', 'Round Table'],
     features: ['Pillarless Structure', 'Crystal Chandeliers', 'VIP Greenrooms', 'Line Array Sound', 'LED Wall', 'Backstage'],
   },
@@ -203,7 +201,7 @@ const HALLS = [
     id: 'harmony', name: 'Harmony', capacity: '150–400 Guests',
     tagline: 'Where every occasion finds its rhythm.',
     description: 'A versatile mid-scale hall adaptable to conferences, receptions, and social galas. Acoustic partitioning allows dual-event setups simultaneously.',
-    image: 'https://images.unsplash.com/photo-1545232979-8bf34eb9757b?auto=format&fit=crop&q=80&w=1600',
+    image: 'https://res.cloudinary.com/di1chosqa/image/upload/v1780212827/harmony_sqhlup.webp',
     setups: ['Theatre Style', 'Cluster Setup', 'Round Table'],
     features: ['Acoustic Partitioning', 'Ambient Lighting', 'Bespoke Catering', 'Projection System', 'Lounge Area', 'Wi-Fi'],
   },
@@ -211,7 +209,7 @@ const HALLS = [
     id: 'suraahi', name: 'Suraahi', capacity: '500–1500 Guests',
     tagline: 'Open-air romance underneath the stars.',
     description: 'Our sprawling open-air pavilion set beneath a canopy of stars. Perfect for grand weddings, outdoor concerts, and mega-events with unmatched scale.',
-    image: 'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&q=80&w=1600',
+    image: 'https://res.cloudinary.com/di1chosqa/image/upload/v1780212827/suraahi_heyrxk.webp',
     setups: ['Theatre Style', 'Cluster Setup', 'Round Table', 'Wedding Setup'],
     features: ['Manicured Lawns', 'Outdoor Cabanas', 'Amphitheater Acoustics', 'Botanical Arcades', 'Flood Lighting', 'Valet'],
   },
@@ -221,12 +219,12 @@ const DINING = {
   name: 'Saatvik Restaurant',
   tagline: 'A delightful culinary journey.',
   description: 'Saatvik Restaurant offers authentic Indian, Chinese, Continental and regional delicacies prepared by our experienced chefs. From intimate family dinners to lavish buffets — every meal is a celebration of flavour and tradition.',
-  image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=1600',
+  image: 'https://res.cloudinary.com/di1chosqa/image/upload/v1780212827/restaurant_Interior_tt0dih.webp',
   highlights: [
-    { label: 'Live Kitchen Counter', img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=800' },
-    { label: 'Buffet Area',          img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=800' },
-    { label: 'Family Dining',        img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800' },
-    { label: 'Restaurant Interior',  img: 'https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&q=80&w=800' },
+    { label: 'Live Kitchen Counter', img: 'https://res.cloudinary.com/di1chosqa/image/upload/v1780212828/kitchen_fpkykg.webp' },
+    { label: 'Buffet Area',          img: 'https://res.cloudinary.com/di1chosqa/image/upload/v1780212828/buffet_area_kqihpl.webp' },
+    { label: 'Family Dining',        img: 'https://res.cloudinary.com/di1chosqa/image/upload/v1780212827/family_area_un6cft.webp' },
+    { label: 'Restaurant Interior',  img: 'https://res.cloudinary.com/di1chosqa/image/upload/v1780212827/restaurant_Interior_tt0dih.webp' },
   ],
   cuisines: ['Authentic Indian', 'Chinese', 'Continental', 'Regional Specialties'],
   timings: [
@@ -291,34 +289,85 @@ function useScrolledPastHero(
 
 // ─── Service Dock ─────────────────────────────────────────────
 function ServiceDock({ active, onChange }: { active: ServiceType; onChange: (s: ServiceType) => void }) {
+  const [showTooltip, setShowTooltip] = useState(true);
+  const [rimDone, setRimDone]         = useState(false);
+
+  // Hide tooltip after 4s
+  useEffect(() => {
+    const t = setTimeout(() => setShowTooltip(false), 3000);
+    return () => clearTimeout(t);
+  }, []);
+
+  // Stop gold rim after 3s
+  useEffect(() => {
+    const t = setTimeout(() => setRimDone(true), 3000);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <motion.div
-      className="fixed bottom-8 left-1/2 z-50"
+      className="fixed bottom-8 left-1/2 z-50 flex flex-col items-center gap-2"
       style={{ x: '-50%' }}
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 0.3, duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
     >
-      <div className="absolute inset-0 scale-150 rounded-full bg-[#C4A472]/8 blur-3xl pointer-events-none" />
-      <div className="relative flex items-center gap-0.5 rounded-full border border-[#C4A472]/20 bg-[#0D0B09] p-1.5 backdrop-blur-2xl shadow-[0_8px_40px_rgba(0,0,0,0.9)]">
-        {SERVICES.map(({ id, label, sub, icon: Icon }) => {
-          const isActive = active === id;
-          return (
-            <button key={id} onClick={() => onChange(id)}
-              className="relative flex items-center gap-2.5 rounded-full px-4 py-2.5 transition-all duration-300 cursor-pointer focus:outline-none">
-              {isActive && (
-                <motion.div layoutId="service-pill"
-                  className="absolute inset-0 rounded-full border border-[#C4A472]/40 bg-[#C4A472]/15"
-                  transition={{ type: 'spring', stiffness: 380, damping: 30 }} />
-              )}
-              <Icon className={`relative z-10 h-4 w-4 shrink-0 transition-colors duration-300 ${isActive ? 'text-[#C4A472]' : 'text-[#7A7068]'}`} />
-              <div className="relative z-10 leading-none">
-                <p className={`text-[12px] font-sans font-medium tracking-wide transition-colors duration-300 ${isActive ? 'text-[#F2ECE2]' : 'text-[#9A9087]'}`}>{label}</p>
-                <p className={`mt-[3px] text-[8px] uppercase tracking-[0.3em] transition-colors duration-300 ${isActive ? 'text-[#C4A472]' : 'text-[#6A6058]'}`}>{sub}</p>
-              </div>
-            </button>
-          );
-        })}
+      {/* Tooltip */}
+      <AnimatePresence>
+        {showTooltip && (
+          <motion.div
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 4 }}
+            transition={{ duration: 0.4 }}
+            className="bg-[#0D0B09]/80 text-[#7A7068] text-[8px] font-mono tracking-[0.25em] uppercase px-3 py-1.5 rounded-full whitespace-nowrap border border-[#C4A472]/15"
+          >
+            Tap to explore Rooms · Halls · Dining
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Dock */}
+      <div className="relative">
+
+        {/* Gold rim — animated stroke around the dock for first 3s */}
+        {!rimDone && (
+          <motion.div
+            className="absolute -inset-[3px] rounded-full pointer-events-none"
+            style={{
+              background: 'transparent',
+              boxShadow: '0 0 0 2px #C4A472',
+            }}
+            initial={{ opacity: 1, scale: 1 }}
+            animate={{ opacity: [1, 0.4, 1, 0.4, 1, 0], scale: [1, 1.04, 1, 1.04, 1, 1.02] }}
+            transition={{ duration: 3, ease: 'easeInOut', times: [0, 0.2, 0.4, 0.6, 0.8, 1] }}
+          />
+        )}
+
+        {/* Soft glow */}
+        <div className="absolute inset-0 scale-150 rounded-full bg-[#C4A472]/10 blur-2xl pointer-events-none" />
+
+        {/* Pill — light background */}
+        <div className="relative flex items-center gap-0.5 rounded-full border border-[#C4A472]/30 bg-[#F5EDD8] p-1.5 shadow-[0_8px_40px_rgba(0,0,0,0.5)]">
+          {SERVICES.map(({ id, label, sub, icon: Icon }) => {
+            const isActive = active === id;
+            return (
+              <button key={id} onClick={() => onChange(id)}
+                className="relative flex items-center gap-2.5 rounded-full px-4 py-2.5 transition-all duration-300 cursor-pointer focus:outline-none">
+                {isActive && (
+                  <motion.div layoutId="service-pill"
+                    className="absolute inset-0 rounded-full bg-[#C4A472] shadow-[0_2px_12px_rgba(196,164,114,0.4)]"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }} />
+                )}
+                <Icon className={`relative z-10 h-4 w-4 shrink-0 transition-colors duration-300 ${isActive ? 'text-[#0A0908]' : 'text-[#8A7A62]'}`} />
+                <div className="relative z-10 leading-none">
+                  <p className={`text-[12px] font-sans font-semibold tracking-wide transition-colors duration-300 ${isActive ? 'text-[#0A0908]' : 'text-[#3A3020]'}`}>{label}</p>
+                  <p className={`mt-[3px] text-[8px] uppercase tracking-[0.3em] transition-colors duration-300 ${isActive ? 'text-[#0A0908]/70' : 'text-[#9A8A72]'}`}>{sub}</p>
+                </div>
+              </button>
+            );
+          })}
+        </div>
       </div>
     </motion.div>
   );
@@ -401,8 +450,8 @@ function SectionHero({
         className="absolute inset-0 h-full w-full object-cover"
         style={{ filter: 'brightness(0.38) saturate(0.65)' }} />
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-[#0A0908]" />
-      <div className="relative z-10 text-center pt-8">
-        <h2 className="font-serif text-4xl font-light leading-none tracking-[-0.03em] md:text-6xl">
+      <div className="relative z-10 text-center translate-y-10 md:translate-y-14">
+        <h2 className="font-serif text-5xl font-light leading-none tracking-[-0.03em] md:text-7xl lg:text-7xl">
           <span className="text-[#F2ECE2]">{title}</span>
           <span className="ml-3 italic text-[#C4A472]">{accent}</span>
         </h2>
@@ -492,17 +541,25 @@ export default function ExperienceHub() {
                     const isActive = activeRoom === idx;
                     return (
                       <button key={room.id} onClick={() => setActiveRoom(idx)}
-                        className={`relative flex shrink-0 items-center gap-3 rounded-full border px-3 py-2 transition-colors duration-300 cursor-pointer focus:outline-none ${
-                          isActive ? 'border-[#C4A472] bg-[#C4A472]/10' : 'border-[#C4A472]/10 bg-[#0F0E0D]'
-                        }`}>
-                        <div className="h-9 w-9 overflow-hidden rounded-full border border-[#C4A472]/20 shrink-0">
+                        className={`relative flex shrink-0 items-center rounded-full border px-5 py-3 transition-all duration-300 cursor-pointer focus:outline-none ${
+  isActive
+    ? 'border-[#C4A472] bg-[#C4A472]/10'
+    : 'border-[#C4A472]/10 bg-[#0F0E0D]'
+}`}>
+                        {/* <div className="h-9 w-9 overflow-hidden rounded-full border border-[#C4A472]/20 shrink-0">
                           <img src={room.images[0]} alt={room.name} className="h-full w-full object-cover" />
-                        </div>
+                        </div> */}
                         <div className="pr-1 text-left">
-                          <p className={`font-serif text-[14px] leading-none transition-colors duration-300 ${isActive ? 'text-[#F2ECE2]' : 'text-[#7A7068]'}`}>
-                            {room.name}
-                          </p>
-                          <p className="mt-0.5 text-[8px] uppercase tracking-[0.2em] text-[#C4A472]">{room.price}</p>
+                          <p
+  className={`font-serif text-[18px] leading-none transition-colors duration-300 ${
+    isActive
+      ? 'text-[#F2ECE2]'
+      : 'text-[#7A7068]'
+  }`}
+>
+  {room.name}
+</p>
+                          {/* <p className="mt-0.5 text-[8px] uppercase tracking-[0.2em] text-[#C4A472]">{room.price}</p> */}
                         </div>
                       </button>
                     );
@@ -512,17 +569,25 @@ export default function ExperienceHub() {
                     const isActive = activeHall === idx;
                     return (
                       <button key={hall.id} onClick={() => setActiveHall(idx)}
-                        className={`relative flex shrink-0 items-center gap-3 rounded-full border px-3 py-2 transition-colors duration-300 cursor-pointer focus:outline-none ${
-                          isActive ? 'border-[#C4A472] bg-[#C4A472]/10' : 'border-[#C4A472]/10 bg-[#0F0E0D]'
-                        }`}>
-                        <div className="h-9 w-9 overflow-hidden rounded-full border border-[#C4A472]/20 shrink-0">
+                        className={`relative flex shrink-0 items-center rounded-full border px-5 py-3 transition-all duration-300 cursor-pointer focus:outline-none ${
+  isActive
+    ? 'border-[#C4A472] bg-[#C4A472]/10'
+    : 'border-[#C4A472]/10 bg-[#0F0E0D]'
+}`}>
+                        {/* <div className="h-9 w-9 overflow-hidden rounded-full border border-[#C4A472]/20 shrink-0">
                           <img src={hall.image} alt={hall.name} className="h-full w-full object-cover" />
-                        </div>
+                        </div> */}
                         <div className="pr-1 text-left">
-                          <p className={`font-serif text-[14px] leading-none transition-colors duration-300 ${isActive ? 'text-[#F2ECE2]' : 'text-[#7A7068]'}`}>
-                            {hall.name}
-                          </p>
-                          <p className="mt-0.5 text-[8px] uppercase tracking-[0.2em] text-[#C4A472]">{hall.capacity}</p>
+                          <p
+  className={`font-serif text-[18px] leading-none transition-colors duration-300 ${
+    isActive
+      ? 'text-[#F2ECE2]'
+      : 'text-[#7A7068]'
+  }`}
+>
+  {hall.name}
+</p>
+                          {/* <p className="mt-0.5 text-[8px] uppercase tracking-[0.2em] text-[#C4A472]">{hall.capacity}</p> */}
                         </div>
                       </button>
                     );
@@ -532,15 +597,23 @@ export default function ExperienceHub() {
                     const isActive = activeDining === idx;
                     return (
                       <button key={idx} onClick={() => setActiveDining(idx)}
-                        className={`relative flex shrink-0 items-center gap-3 rounded-full border px-3 py-2 transition-colors duration-300 cursor-pointer focus:outline-none ${
-                          isActive ? 'border-[#C4A472] bg-[#C4A472]/10' : 'border-[#C4A472]/10 bg-[#0F0E0D]'
-                        }`}>
-                        <div className="h-9 w-9 overflow-hidden rounded-full border border-[#C4A472]/20 shrink-0">
+                        className={`relative flex shrink-0 items-center rounded-full border px-5 py-3 transition-all duration-300 cursor-pointer focus:outline-none ${
+  isActive
+    ? 'border-[#C4A472] bg-[#C4A472]/10'
+    : 'border-[#C4A472]/10 bg-[#0F0E0D]'
+}`}>
+                        {/* <div className="h-9 w-9 overflow-hidden rounded-full border border-[#C4A472]/20 shrink-0">
                           <img src={h.img} alt={h.label} className="h-full w-full object-cover" />
-                        </div>
-                        <p className={`pr-1 font-serif text-[13px] transition-colors duration-300 ${isActive ? 'text-[#F2ECE2]' : 'text-[#7A7068]'}`}>
-                          {h.label}
-                        </p>
+                        </div> */}
+                        <p
+  className={`font-serif text-[18px] leading-none transition-colors duration-300 ${
+    isActive
+      ? 'text-[#F2ECE2]'
+      : 'text-[#7A7068]'
+  }`}
+>
+  {h.label}
+</p>
                       </button>
                     );
                   })}
@@ -564,7 +637,7 @@ export default function ExperienceHub() {
           >
             <SectionHero
               title="Rooms" accent="& Suites"
-              image="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=80&w=1920"
+              image="https://res.cloudinary.com/di1chosqa/image/upload/v1780173895/delux_room_2_c8oasx.webp"
               heroRef={roomsHeroRef}
             />
 
@@ -585,34 +658,34 @@ export default function ExperienceHub() {
           <button
             key={room.id}
             onClick={() => setActiveRoom(idx)}
-            className={`relative flex shrink-0 items-center gap-3 rounded-full border px-3 py-2 transition-colors duration-300 cursor-pointer focus:outline-none ${
-              isActive
-                ? 'border-[#C4A472] bg-[#C4A472]/10'
-                : 'border-[#C4A472]/10 bg-[#0F0E0D]'
-            }`}
+            className={`relative flex shrink-0 items-center rounded-full border px-5 py-3 transition-all duration-300 cursor-pointer focus:outline-none ${
+  isActive
+    ? 'border-[#C4A472] bg-[#C4A472]/10'
+    : 'border-[#C4A472]/10 bg-[#0F0E0D]'
+}`}
           >
-            <div className="h-9 w-9 overflow-hidden rounded-full border border-[#C4A472]/20 shrink-0">
+            {/* <div className="h-9 w-9 overflow-hidden rounded-full border border-[#C4A472]/20 shrink-0">
               <img
                 src={room.images[0]}
                 alt={room.name}
                 className="h-full w-full object-cover"
               />
-            </div>
+            </div> */}
 
             <div className="pr-1 text-left">
               <p
-                className={`font-serif text-[14px] leading-none transition-colors duration-300 ${
-                  isActive
-                    ? 'text-[#F2ECE2]'
-                    : 'text-[#7A7068]'
-                }`}
-              >
-                {room.name}
-              </p>
+  className={`font-serif text-[18px] leading-none transition-colors duration-300 ${
+    isActive
+      ? 'text-[#F2ECE2]'
+      : 'text-[#7A7068]'
+  }`}
+>
+  {room.name}
+</p>
 
-              <p className="mt-0.5 text-[8px] uppercase tracking-[0.2em] text-[#C4A472]">
+              {/* <p className="mt-0.5 text-[8px] uppercase tracking-[0.2em] text-[#C4A472]">
                 {room.price}
-              </p>
+              </p> */}
             </div>
           </button>
         );
@@ -634,34 +707,34 @@ export default function ExperienceHub() {
         <button
           key={room.id}
           onClick={() => setActiveRoom(idx)}
-          className={`relative flex items-center gap-3 rounded-full border px-4 py-3 transition-all duration-300 ${
-            isActive
-              ? 'border-[#C4A472] bg-[#C4A472]/10'
-              : 'border-transparent hover:border-[#C4A472]/20'
-          }`}
+          className={`relative flex items-center rounded-full border px-7 py-4 transition-all duration-300 ${
+  isActive
+    ? 'border-[#C4A472] bg-[#C4A472]/10'
+    : 'border-[#C4A472]/10 hover:border-[#C4A472]/30'
+}`}
         >
 
-          <div className="h-10 w-10 overflow-hidden rounded-full">
+          {/* <div className="h-10 w-10 overflow-hidden rounded-full">
             <img
               src={room.images[0]}
               alt={room.name}
               className="h-full w-full object-cover"
             />
-          </div>
+          </div> */}
 
           <div className="text-left leading-none">
 
             <p
-              className={`font-serif text-[15px] transition-colors duration-300 ${
-                isActive
-                  ? 'text-[#F2ECE2]'
-                  : 'text-[#8A8177]'
-              }`}
-            >
-              {room.name}
-            </p>
+  className={`font-serif text-[19px] transition-colors duration-300 ${
+    isActive
+      ? 'text-[#F2ECE2]'
+      : 'text-[#8A8177]'
+  }`}
+>
+  {room.name}
+</p>
 
-            <p
+            {/* <p
               className={`mt-1 text-[9px] uppercase tracking-[0.2em] ${
                 isActive
                   ? 'text-[#C4A472]'
@@ -669,7 +742,7 @@ export default function ExperienceHub() {
               }`}
             >
               {room.price}
-            </p>
+            </p> */}
 
           </div>
         </button>
@@ -703,20 +776,20 @@ export default function ExperienceHub() {
                         <h3 className="font-serif text-4xl font-light leading-none text-[#F2ECE2] md:text-5xl">
                           {ROOMS[activeRoom].name}
                         </h3>
-                        <p className="mt-3 font-mono text-sm text-[#C4A472]">From {ROOMS[activeRoom].price}</p>
+                        <p className="mt-3 font-mono text-base text-[#C4A472]">From {ROOMS[activeRoom].price}</p>
 
                         <div className="mt-5 flex items-center gap-6">
                           <div className="flex items-center gap-2">
                             <Users className="h-4 w-4 text-[#C4A472]" />
-                            <span className="text-sm text-[#7A7068]">{ROOMS[activeRoom].guests}</span>
+                            <span className="text-base text-[#7A7068]">{ROOMS[activeRoom].guests}</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <Maximize className="h-4 w-4 text-[#C4A472]" />
-                            <span className="text-sm text-[#7A7068]">{ROOMS[activeRoom].size}</span>
+                            <span className="text-base text-[#7A7068]">{ROOMS[activeRoom].size}</span>
                           </div>
                         </div>
 
-                        <p className="mt-6 text-[15px] leading-relaxed text-[#8A8177]">{ROOMS[activeRoom].description}</p>
+                        <p className="mt-6 text-[17px] leading-relaxed text-[#8A8177]">{ROOMS[activeRoom].description}</p>
 
                         <div className="mt-8">
                           <p className="mb-3 text-[9px] uppercase tracking-[0.35em] text-[#5A524A]">Room Features</p>
@@ -735,7 +808,7 @@ export default function ExperienceHub() {
                                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#C4A472]/10 bg-[#C4A472]/5">
                                   <Icon className="h-3.5 w-3.5 text-[#C4A472]" />
                                 </div>
-                                <span className="text-[13px] text-[#7A7068]">{label}</span>
+                                <span className="text-[15px] text-[#7A7068]">{label}</span>
                               </div>
                             ))}
                           </div>
@@ -769,7 +842,7 @@ export default function ExperienceHub() {
           >
             <SectionHero
               title="Banquet" accent="& Events"
-              image="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=1920"
+              image="https://res.cloudinary.com/di1chosqa/image/upload/v1780212827/harmony_sqhlup.webp"
               heroRef={hallsHeroRef}
             />
 
@@ -789,35 +862,34 @@ export default function ExperienceHub() {
           <button
             key={hall.id}
             onClick={() => setActiveHall(idx)}
-            className={`relative flex shrink-0 items-center gap-3 rounded-full border px-3 py-2 transition-colors duration-300 cursor-pointer focus:outline-none ${
-              isActive
-                ? 'border-[#C4A472] bg-[#C4A472]/10'
-                : 'border-[#C4A472]/10 bg-[#0F0E0D]'
-            }`}
+            className={`relative flex shrink-0 items-center rounded-full border px-5 py-3 transition-all duration-300 cursor-pointer focus:outline-none ${
+  isActive
+    ? 'border-[#C4A472] bg-[#C4A472]/10'
+    : 'border-[#C4A472]/10 bg-[#0F0E0D]'
+}`}
           >
 
-            <div className="h-9 w-9 overflow-hidden rounded-full border border-[#C4A472]/20 shrink-0">
+            {/* <div className="h-9 w-9 overflow-hidden rounded-full border border-[#C4A472]/20 shrink-0">
               <img
                 src={hall.image}
                 alt={hall.name}
                 className="h-full w-full object-cover"
               />
-            </div>
+            </div> */}
 
             <div className="pr-1 text-left">
               <p
-                className={`font-serif text-[14px] leading-none transition-colors duration-300 ${
-                  isActive
-                    ? 'text-[#F2ECE2]'
-                    : 'text-[#7A7068]'
-                }`}
-              >
-                {hall.name}
-              </p>
-
-              <p className="mt-0.5 text-[8px] uppercase tracking-[0.2em] text-[#C4A472]">
+  className={`font-serif text-[18px] leading-none transition-colors duration-300 ${
+    isActive
+      ? 'text-[#F2ECE2]'
+      : 'text-[#7A7068]'
+  }`}
+>
+  {hall.name}
+</p>
+              {/* <p className="mt-0.5 text-[8px] uppercase tracking-[0.2em] text-[#C4A472]">
                 {hall.capacity}
-              </p>
+              </p> */}
             </div>
 
           </button>
@@ -840,34 +912,34 @@ export default function ExperienceHub() {
         <button
           key={hall.id}
           onClick={() => setActiveHall(idx)}
-          className={`relative flex items-center gap-3 rounded-full border px-4 py-3 transition-all duration-300 ${
-            isActive
-              ? 'border-[#C4A472] bg-[#C4A472]/10'
-              : 'border-transparent hover:border-[#C4A472]/20'
-          }`}
+          className={`relative flex items-center rounded-full border px-7 py-4 transition-all duration-300 ${
+  isActive
+    ? 'border-[#C4A472] bg-[#C4A472]/10'
+    : 'border-[#C4A472]/10 hover:border-[#C4A472]/30'
+}`}
         >
 
-          <div className="h-10 w-10 overflow-hidden rounded-full">
+          {/* <div className="h-10 w-10 overflow-hidden rounded-full">
             <img
               src={hall.image}
               alt={hall.name}
               className="h-full w-full object-cover"
             />
-          </div>
+          </div> */}
 
           <div className="text-left leading-none">
 
             <p
-              className={`font-serif text-[15px] transition-colors duration-300 ${
-                isActive
-                  ? 'text-[#F2ECE2]'
-                  : 'text-[#8A8177]'
-              }`}
-            >
-              {hall.name}
-            </p>
+  className={`font-serif text-[19px] transition-colors duration-300 ${
+    isActive
+      ? 'text-[#F2ECE2]'
+      : 'text-[#8A8177]'
+  }`}
+>
+  {hall.name}
+</p>
 
-            <p
+            {/* <p
               className={`mt-1 text-[9px] uppercase tracking-[0.2em] ${
                 isActive
                   ? 'text-[#C4A472]'
@@ -875,7 +947,7 @@ export default function ExperienceHub() {
               }`}
             >
               {hall.capacity}
-            </p>
+            </p> */}
 
           </div>
         </button>
@@ -916,7 +988,7 @@ export default function ExperienceHub() {
                       >
                         <h3 className="font-serif text-4xl font-light leading-none text-[#F2ECE2] md:text-5xl">{HALLS[activeHall].name}</h3>
                         <p className="mt-3 font-mono text-sm text-[#C4A472]">{HALLS[activeHall].capacity}</p>
-                        <p className="mt-5 text-[15px] leading-relaxed text-[#8A8177]">{HALLS[activeHall].description}</p>
+                        <p className="mt-5 text-[17px] leading-relaxed text-[#8A8177]">{HALLS[activeHall].description}</p>
 
                         <div className="mt-8">
                           <p className="mb-3 text-[9px] uppercase tracking-[0.35em] text-[#5A524A]">Setup Configurations</p>
@@ -933,7 +1005,7 @@ export default function ExperienceHub() {
                             {HALLS[activeHall].features.map(f => (
                               <div key={f} className="flex items-center gap-2">
                                 <span className="w-1 h-1 rotate-45 bg-[#C4A472]/50 shrink-0" />
-                                <span className="text-[13px] text-[#7A7068]">{f}</span>
+                                <span className="text-[15px] text-[#7A7068]">{f}</span>
                               </div>
                             ))}
                           </div>
@@ -986,31 +1058,31 @@ export default function ExperienceHub() {
           <button
             key={idx}
             onClick={() => setActiveDining(idx)}
-            className={`relative flex shrink-0 items-center gap-3 rounded-full border px-3 py-2 transition-colors duration-300 cursor-pointer focus:outline-none ${
-              isActive
-                ? 'border-[#C4A472] bg-[#C4A472]/10'
-                : 'border-[#C4A472]/10 bg-[#0F0E0D]'
-            }`}
+            className={`relative flex shrink-0 items-center rounded-full border px-5 py-3 transition-all duration-300 cursor-pointer focus:outline-none ${
+  isActive
+    ? 'border-[#C4A472] bg-[#C4A472]/10'
+    : 'border-[#C4A472]/10 bg-[#0F0E0D]'
+}`}
           >
 
-            <div className="h-9 w-9 overflow-hidden rounded-full border border-[#C4A472]/20 shrink-0">
+            {/* <div className="h-9 w-9 overflow-hidden rounded-full border border-[#C4A472]/20 shrink-0">
               <img
                 src={item.img}
                 alt={item.label}
                 className="h-full w-full object-cover"
               />
-            </div>
+            </div> */}
 
             <div className="pr-1 text-left">
               <p
-                className={`font-serif text-[13px] leading-none transition-colors duration-300 ${
-                  isActive
-                    ? 'text-[#F2ECE2]'
-                    : 'text-[#7A7068]'
-                }`}
-              >
-                {item.label}
-              </p>
+  className={`font-serif text-[18px] leading-none transition-colors duration-300 ${
+    isActive
+      ? 'text-[#F2ECE2]'
+      : 'text-[#7A7068]'
+  }`}
+>
+  {item.label}
+</p>
             </div>
 
           </button>
@@ -1034,30 +1106,30 @@ export default function ExperienceHub() {
         <button
           key={idx}
           onClick={() => setActiveDining(idx)}
-          className={`relative flex items-center gap-3 rounded-full border px-4 py-3 transition-all duration-300 ${
-            isActive
-              ? 'border-[#C4A472] bg-[#C4A472]/10'
-              : 'border-transparent hover:border-[#C4A472]/20'
-          }`}
+          className={`relative flex items-center rounded-full border px-7 py-4 transition-all duration-300 ${
+  isActive
+    ? 'border-[#C4A472] bg-[#C4A472]/10'
+    : 'border-[#C4A472]/10 hover:border-[#C4A472]/30'
+}`}
         >
 
-          <div className="h-10 w-10 overflow-hidden rounded-full">
+          {/* <div className="h-10 w-10 overflow-hidden rounded-full">
             <img
               src={item.img}
               alt={item.label}
               className="h-full w-full object-cover"
             />
-          </div>
+          </div> */}
 
-          <p
-            className={`font-serif text-[14px] transition-colors duration-300 ${
-              isActive
-                ? 'text-[#F2ECE2]'
-                : 'text-[#8A8177]'
-            }`}
-          >
-            {item.label}
-          </p>
+         <p
+  className={`font-serif text-[19px] transition-colors duration-300 ${
+    isActive
+      ? 'text-[#F2ECE2]'
+      : 'text-[#8A8177]'
+  }`}
+>
+  {item.label}
+</p>
 
         </button>
       );
@@ -1101,7 +1173,7 @@ export default function ExperienceHub() {
                       <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.4em] text-[#C4A472]">{DINING.tagline}</p>
                     </div>
 
-                    <p className="font-serif italic text-base text-[#8A8177] leading-relaxed">"{DINING.description}"</p>
+                    <p className="font-serif italic text-lg text-[#8A8177] leading-relaxed">"{DINING.description}"</p>
 
                     <div>
                       <p className="mb-3 text-[9px] uppercase tracking-[0.35em] text-[#5A524A]">Cuisines</p>
@@ -1117,7 +1189,7 @@ export default function ExperienceHub() {
                       <div className="space-y-2">
                         {DINING.timings.map(({ meal, time }) => (
                           <div key={meal} className="flex items-center justify-between py-2 border-b border-[#C4A472]/8">
-                            <span className="font-sans text-sm text-[#7A7068]">{meal}</span>
+                            <span className="font-sans text-base text-[#7A7068]">{meal}</span>
                             <span className="font-mono text-[10px] text-[#C4A472] tracking-wider">{time}</span>
                           </div>
                         ))}
@@ -1146,12 +1218,12 @@ export default function ExperienceHub() {
       {/* ── Home footer content ─────────────────────────── */}
       <div ref={footerRef} className="pb-0">
         {/* Quote divider */}
-        <section className="relative bg-[#0D0B09] px-6 md:px-12 py-20 flex items-center justify-center border-t border-[#C4A472]/15">
+        <section className="relative bg-[#F2ECE2] px-6 md:px-12 py-20 flex items-center justify-center border-t border-[#C4A472]/15">
           <div className="max-w-3xl text-center space-y-5 select-none">
-            <span className="text-[9px] font-mono tracking-[0.4em] text-[#C4A472] uppercase block">
+            <span className="text-xs font-mono tracking-[0.2em] text-[#9A7A4A] uppercase block">
               The Grand Commitment
             </span>
-            <p className="font-serif italic font-light text-xl md:text-3xl text-[#F2ECE2] leading-relaxed">
+            <p className="font-serif italic font-light text-xl md:text-3xl text-[#1A1714] leading-relaxed">
               "This is not a stay. This is stepping into a memory before it unfolds — high-ceiling elegance, wild-corridor proximity, and the absolute discretion of quiet luxury."
             </p>
             <div className="w-10 h-px bg-[#C4A472]/35 mx-auto" />

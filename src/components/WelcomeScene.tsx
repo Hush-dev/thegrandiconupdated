@@ -1,175 +1,241 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { motion } from 'motion/react';
+import { useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 
 interface WelcomeSceneProps {
   onComplete: () => void;
 }
 
-export default function WelcomeScene({ onComplete }: WelcomeSceneProps) {
-  const [phase, setPhase] = useState<'enter' | 'hold'>('enter');
+export default function WelcomeScene({
+  onComplete,
+}: WelcomeSceneProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isExiting, setIsExiting] = useState(false);
 
-  // Auto-advance timeline
   useEffect(() => {
-    // Phase 1: content fades in (0 → 0.8s)
-    // Phase 2: hold (0.8s → 4.5s)
-    // Phase 3: exit transition (4.5s → 5.5s) then call onComplete
-    const holdTimer = setTimeout(() => setPhase('hold'), 800);
-    const doneTimer = setTimeout(() => onComplete(), 4500);
-    return () => {
-      clearTimeout(holdTimer);
-      clearTimeout(doneTimer);
-    };
-  }, [onComplete]);
+    const timer = setTimeout(() => {
+      handleExit();
+    }, 4200);
 
-  const handleSkip = () => {
-    setPhase('hold'); // triggers AnimatePresence exit on the welcome div
-    setTimeout(onComplete, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleExit = () => {
+    if (isExiting) return;
+
+    setIsExiting(true);
+
+    setTimeout(() => {
+      onComplete();
+    }, 1200);
   };
 
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (!video) return;
+
+    video.muted = true;
+
+    const playVideo = async () => {
+      try {
+        await video.play();
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    playVideo();
+  }, []);
+
   return (
-    <motion.div
-      className="fixed inset-0 z-[200] bg-[#0A0908] flex flex-col items-center justify-center overflow-hidden"
-      exit={{ clipPath: 'inset(0 0 100% 0)', transition: { duration: 1.0, ease: [0.76, 0, 0.24, 1] } }}
-    >
-          {/* Background image — hotel exterior placeholder */}
-          <motion.div
-            className="absolute inset-0"
-            initial={{ scale: 1.08, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 2.5, ease: 'easeOut' }}
-          >
-            <img
-              src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=2000"
-              alt="The Grand Icon"
-              className="w-full h-full object-cover"
-              style={{ filter: 'saturate(0.6) brightness(0.35)' }}
-            />
-            {/* Layered overlays for depth */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-[#0A0908]/50 to-[#0A0908]/20" />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0A0908]/60 via-transparent to-[#0A0908]/40" />
-          </motion.div>
-
-          {/* Corner frames */}
-          {['top-8 left-8 border-t border-l', 'top-8 right-8 border-t border-r',
-            'bottom-8 left-8 border-b border-l', 'bottom-8 right-8 border-b border-r'].map((cls, i) => (
-            <motion.div key={i}
-              className={`absolute w-10 h-10 ${cls} border-[#C4A472]/20`}
-              initial={{ opacity: 0, scale: 0.7 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3 + i * 0.07, duration: 0.6 }}
-            />
-          ))}
-
-          {/* Center content */}
-          <div className="relative z-10 flex flex-col items-center text-center px-6 space-y-8">
-
-            {/* Logo */}
-            <motion.div
-              initial={{ opacity: 0, y: 20, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0,  scale: 1 }}
-              transition={{ delay: 0.4, duration: 1, ease: [0.33, 1, 0.68, 1] }}
-              className="relative"
+    <>
+      {!isExiting ? (
+        <motion.div
+          className="fixed inset-0 z-[200] overflow-hidden bg-[#0A0908]"
+          style={{
+    willChange: 'opacity, transform',
+    backfaceVisibility: 'hidden',
+    transform: 'translateZ(0)',
+  }}
+          animate={{
+  opacity: isExiting ? 0 : 1,
+  scale: isExiting ? 1.015 : 1,
+}}
+transition={{
+  duration: 1,
+  ease: [0.76, 0, 0.24, 1],
+}}
+        >
+          {/* VIDEO */}
+          <div className="absolute inset-0 overflow-hidden">
+            <motion.video
+              ref={videoRef}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              disablePictureInPicture
+              initial={{ scale: 1.08 }}
+              animate={{ scale: 1 }}
+              transition={{
+                duration: 6,
+                ease: 'easeOut',
+              }}
+              className="w-full h-full object-cover will-change-transform transform-gpu backface-hidden"
             >
-              <div className="absolute inset-0 rounded-full bg-[#C4A472]/10 blur-xl scale-150" />
-              <img src="/thegrandicon_logo.webp" alt="The Grand Icon"
-                className="relative w-20 h-20 sm:w-24 sm:h-24 object-contain drop-shadow-[0_0_20px_rgba(196,164,114,0.3)]" />
-            </motion.div>
+              <source
+                src="https://res.cloudinary.com/di1chosqa/video/upload/f_mp4,q_auto:best,vc_h264,w_2560/output_dwtbca.mp4"
+                type="video/mp4"
+              />
+            </motion.video>
 
-            {/* Welcome text */}
-            <div className="space-y-3 overflow-hidden">
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7, duration: 0.8 }}
-                className="text-[9px] sm:text-[10px] font-mono tracking-[0.5em] text-[#C4A472] uppercase"
-              >
-                Namaste · Welcome · स्वागत है
-              </motion.p>
+            {/* CINEMATIC OVERLAYS */}
+            <div className="absolute inset-0 bg-black/35" />
 
-              <div className="overflow-hidden">
-                <motion.h1
-                  initial={{ y: '100%' }}
-                  animate={{ y: 0 }}
-                  transition={{ delay: 0.9, duration: 1.1, ease: [0.76, 0, 0.24, 1] }}
-                  className="font-serif font-light text-3xl sm:text-5xl md:text-6xl text-[#F2ECE2] tracking-wide"
-                >
-                  Welcome to{' '}
-                  <span className="italic text-[#C4A472]">The Grand Icon</span>
-                </motion.h1>
-              </div>
+            <div className="absolute inset-x-0 top-0 h-[58%] bg-gradient-to-b from-[#0A0908]/95 via-[#0A0908]/82 via-30% to-transparent z-[2]" />
 
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.4, duration: 1 }}
-                className="font-sans text-sm md:text-base text-[#7A7068] font-light tracking-wide max-w-md mx-auto"
-              >
-                Luxury, Comfort &amp; Indian Hospitality
-              </motion.p>
-            </div>
+            <div className="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-[#0A0908]/90 to-transparent" />
 
-            {/* 3 CTA buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.7, duration: 0.9 }}
-              className="flex flex-col sm:flex-row items-center gap-3 pt-2"
-            >
-              <WelcomeBtn label="Book A Room"         delay={1.8} onClick={handleSkip} primary />
-              <WelcomeBtn label="Banquet Enquiry"     delay={1.9} onClick={handleSkip} />
-              <WelcomeBtn label="Reserve a Table"     delay={2.0} onClick={handleSkip} />
-            </motion.div>
-
-            {/* Entering experience indicator */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 1, 0] }}
-              transition={{ delay: 2.8, duration: 1.2, repeat: Infinity, repeatDelay: 0.4 }}
-              className="flex items-center gap-2"
-            >
-              <span className="w-1 h-1 rounded-full bg-[#C4A472]" />
-              <span className="text-[8px] font-mono tracking-[0.4em] text-[#5A524A] uppercase">
-                Entering Experience
-              </span>
-              <span className="w-1 h-1 rounded-full bg-[#C4A472]" />
-            </motion.div>
+            {/* LUXURY GRAIN */}
+            {/* <div className="absolute inset-0 opacity-[0.04] mix-blend-soft-light bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] bg-[size:6px_6px]" /> */}
           </div>
 
-          {/* Skip — very subtle, bottom right */}
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.4 }}
-            whileHover={{ opacity: 1 }}
-            transition={{ delay: 2, duration: 0.6 }}
-            onClick={handleSkip}
-            className="absolute bottom-8 right-8 text-[8px] font-mono tracking-[0.4em] text-[#5A524A] hover:text-[#C4A472] uppercase cursor-pointer focus:outline-none transition-colors duration-300 flex items-center gap-2"
+          {/* CONTENT */}
+          <motion.div
+            animate={{
+  opacity: isExiting ? 0 : 1,
+  y: isExiting ? -18 : 0,
+  scale: isExiting ? 0.985 : 1,
+}}
+            transition={{
+              duration: 0.6,
+              ease: [0.76, 0, 0.24, 1],
+            }}
+            className="relative z-20 flex flex-col items-center h-full px-6 pt-[14vh] md:pt-[12vh] text-center"
+            style={{
+  textShadow: '0 4px 30px rgba(0,0,0,0.45)',
+}}
           >
-            Skip Intro
-            <span className="block w-4 h-px bg-current" />
+            {/* EYEBROW */}
+            <motion.p
+              initial={{
+                opacity: 0,
+                y: 24,
+                letterSpacing: '0.6em',
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                letterSpacing: '0.45em',
+              }}
+              transition={{
+                delay: 0.2,
+                duration: 1.1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="mb-5 text-[10px] md:text-xs uppercase text-[#C4A472] font-light"
+            >
+              Welcome To
+            </motion.p>
+
+            {/* TITLE */}
+            <div className="overflow-hidden">
+              <motion.h1
+                initial={{
+                  opacity: 0,
+                  y: 140,
+                  letterSpacing: '0.12em',
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  letterSpacing: '0.01em',
+                }}
+                transition={{
+                  delay: 0.45,
+                  duration: 1.8,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="font-serif font-light text-[#F2ECE2] leading-none tracking-wide text-5xl sm:text-7xl md:text-[120px]"
+              >
+                The Grand{' '}
+                <span className="italic text-[#C4A472]">
+                  Icon
+                </span>
+              </motion.h1>
+            </div>
+
+            {/* SUBTEXT */}
+            <motion.p
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                delay: 1.15,
+                duration: 1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="mt-6 text-[10px] md:text-xs uppercase tracking-[0.22em] text-[#F2ECE2]/65 font-light"
+            >
+              Luxury • Hospitality • Timeless Comfort
+            </motion.p>
+          </motion.div>
+
+          {/* BOTTOM INDICATOR */}
+          <motion.button
+            onClick={handleExit}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              delay: 1.5,
+              duration: 1,
+            }}
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 cursor-pointer"
+          >
+            {/* LINE */}
+            <div className="relative w-px h-16 overflow-hidden bg-white/10">
+              <motion.div
+                className="absolute left-0 right-0 top-full h-[60%] bg-gradient-to-t from-[#C4A472] to-transparent"
+                animate={{
+                  top: ['100%', '-60%'],
+                }}
+                transition={{
+                  duration: 1.6,
+                  ease: 'easeInOut',
+                  repeat: Infinity,
+                }}
+              />
+            </div>
+
+            {/* ARROW */}
+            <motion.svg
+              width="14"
+              height="8"
+              viewBox="0 0 14 8"
+              fill="none"
+              animate={{
+                y: [0, 4, 0],
+              }}
+              transition={{
+                duration: 1.6,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+              className="text-[#F2ECE2]/70"
+            >
+              <path d="M1 7L7 1L13 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </motion.svg>
           </motion.button>
-
-    </motion.div>
-  );
-}
-
-function WelcomeBtn({ label, delay, onClick, primary = false }: {
-  label: string; delay: number; onClick: () => void; primary?: boolean;
-}) {
-  return (
-    <motion.button
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.6 }}
-      onClick={onClick}
-      className={`h-10 px-6 text-[9px] sm:text-[10px] tracking-[0.25em] font-sans font-medium uppercase cursor-pointer focus:outline-none transition-colors duration-300 ${
-        primary
-          ? 'bg-[#C4A472] text-[#0A0908] hover:bg-[#E8D4A8]'
-          : 'border border-[#C4A472]/40 text-[#C4A472] hover:border-[#C4A472] hover:bg-[#C4A472]/10'
-      }`}
-    >
-      {label}
-    </motion.button>
+        </motion.div>
+      ) : null}
+    </>
   );
 }

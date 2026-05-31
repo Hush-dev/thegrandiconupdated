@@ -13,6 +13,16 @@ html {
   text-rendering: optimizeLegibility;
   -webkit-text-size-adjust: 100%;
 }
+/* ─── Global font scale ──────────────────────────────────────── */
+html {
+  font-size: 17px; /* default is 16px — subtle +1px lift across everything */
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 18px;
+  }
+}
 
 body {
   background-color: #0A0908;
